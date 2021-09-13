@@ -4,7 +4,7 @@
 
 <html lang="ko">
 <head>
-    <title>분석 의뢰 목록 - 001</title>
+    <title>분석 의뢰 목록 - 002</title>
     <meta http-equiv="X-UA-Compatible" content="IE=Edge" />
 	<style>
 		h2 {
