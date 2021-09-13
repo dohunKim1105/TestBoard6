@@ -1,0 +1,34 @@
+plugins {
+	id 'org.springframework.boot' version '2.5.3'
+	id 'io.spring.dependency-management' version '1.0.11.RELEASE'
+	id 'java'
+}
+
+group = 'com.board'
+version = '0.0.1-SNAPSHOT'
+sourceCompatibility = '1.8'
+
+repositories {
+	mavenCentral()
+}
+
+dependencies {
+	implementation 'org.springframework.boot:spring-boot-starter-web'
+	implementation 'javax.servlet:jstl'
+	implementation 'org.apache.tomcat.embed:tomcat-embed-jasper'
+	implementation 'com.google.code.gson:gson:2.8.5'
+	implementation 'org.springframework.boot:spring-boot-devtools'
+	implementation 'com.github.scribejava:scribejava-core:2.8.1'
+	
+	implementation 'org.mybatis.spring.boot:mybatis-spring-boot-starter:2.1.2'
+	
+    implementation 'org.mariadb.jdbc:mariadb-java-client:2.1.2'
+    
+    runtimeOnly 'mysql:mysql-connector-java'
+    
+	testImplementation 'org.springframework.boot:spring-boot-starter-test'
+}
+
+test {
+	useJUnitPlatform()
+}

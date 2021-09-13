@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.example.mybatis.mappers.board.BoardMapper">
+	<select id="boardListAll" resultType="BoardDto">
+		SELECT * FROM board
+		ORDER BY num DESC
+	</select>
+
+	<select id="boardDetail" resultType="BoardDto">
+		select * from board
+		where num = #{param1}
+	</select>
+
+	<select id="boardNextNum" resultType="integer">
+		select (SELECT ifnull(MAX(num) + 1, 1)) from board
+	</select>
+	
+	<update id="boardUpdate">
+		update board set title = #{dto.title}, content =
+		#{dto.content}
+		where num = #{dto.num}
+	</update>
+
+	<update id="boardCntPlus">
+		update board set cnt = (cnt+1)
+		where num = #{num}
+	</update>
+	
+	<select id="boardWrite" resultType="Integer">
+		insert into board( num,
+		title, content, cnt, writer)
+		value (
+		(SELECT ifnull(MAX(num) + 1, 1) FROM board b), #{dto.title}, #{dto.content},
+		#{dto.cnt}, #{dto.writer}
+		)
+		RETURNING num;
+	</select>
+	
+	<delete id="boardDelete">
+		delete from board 
+		where num=#{num};
+	</delete>
+
+
+</mapper>

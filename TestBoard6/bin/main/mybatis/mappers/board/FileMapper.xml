@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.example.mybatis.mappers.board.FileMapper">
+
+	<select id="selectFile" resultType="fileDto">
+		select * from boardfile
+		where boardNum = #{num}
+	</select>
+	<insert id="fileUpload">
+		insert into boardfile (filePath, fileName, boardNum)
+		value(
+		#{file.filePath}, #{file.fileName}, #{file.boardNum}
+		)
+	</insert>
+	<delete id="fileDelete">
+		delete from boardfile
+		where boardNum = #{file.boardNum}
+		and fileName = #{file.fileName}
+	</delete>
+
+</mapper>
